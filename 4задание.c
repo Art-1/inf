@@ -10,9 +10,11 @@ int main() {
 	printf("x: \n");
 	scanf("%d", &x);
 	
-	for (int i = 0; i < n; i ++) {
+	for (int i = 1; i <= n; i ++) {
 		if (-1 < x <= 1) {
-			s += (pow(-1, n)*pow(x, n+1))/(n+1);
+			int p_m = i % 2 == 0 ? -1 : 1;
+			x *= x;
+			s += (-1)*p_m*x/(i+1);
 		}
 	}
 	printf("s: %f", s);
