@@ -1,47 +1,38 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
 
 
-float a, b, c, x_start, x_end, dx, x;
-float f;
+float a, b, c, x_start = 30, x_end = 100.0, dx = 3, x, f, i;
 
 int main() {
 	
-	printf("\na: \n");
-	scanf("%f", &a);
-	printf("\nb: \n");
-	scanf("%f", &b);
-	printf("\nc: \n");
-	scanf("%f", &c);
-	
-	printf("\ndx: \n");
-	scanf("%f", &dx);
-	
-	printf("\nx_start: \n");
-	scanf("%f", &x_start);
-	
-	printf("\nx_end: \n");
-	scanf("%f", &x_end);
-	
-	if (((a && b) || (a && c)) == 0) {
-			f = (float) f;
-	}
-	x = x_start;
-	
-	while (x <= x_end) {
-		x += dx;
-		if (((c < 0) && (b != 0)) != 0) {
-			f = a * x * x + b * b * x;
-		}
-		else if (((c > 0) && (b == 0)) != 0) {
-			f = (x + a)/(x + c);
-		}
-		else {
-			f = x/c;
-		}
+	//srand(time(NULL));
+	for (i = 0; i <= 200; i++) {
+		a = rand()%100;
+		b = rand()%100;
+		c = rand()%100;
+		int A = (int) a;
+		int B = (int) a;
+		int C = (int) a;
 		
-		printf("\nf: %f", f);
+		printf("a b c:\n");
+		printf("%f %f %f \n\n", a, b, c);
+		printf("  x  |  f(x) \n");
+		
+		for (x = x_start; x <= x_end; x ++) {
+			if (c < 0 && b != 0) {
+				f = a*x*x + b*b*x;
+			} else if (c > 0 && b == 0) {
+				f = (x+a)/(x+c);
+			} else {
+				f = x/c;
+			}
+			
+			if (((a && b) || (a && c)) == 0)  {
+				printf("%f  |  %d INT\n", x, (int)f);
+			} else {
+				printf("%f  |  %f\n", x, f);
+			}
+		}
 	}
-	
-	return 0;
 }
