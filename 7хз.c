@@ -31,7 +31,7 @@ void main() {
     printf("\n");
     printf("\n");
     
-    for(c = 0 ; c < n - 1; c++) {
+    for(c = 0 ; c < n; c++) {
     	p = arr[c];
     	for(i = 0 ; i < n - 1; i++) {
     		for(j = 0 ; j < m - i - 1 ; j++) {  
