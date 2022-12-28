@@ -1,6 +1,14 @@
 #include <string.h>
 #include <stdio.h>
 
+int count_sum(int);
+
+void main() {
+    int num;
+	scanf("%d", &num);
+	count_sum(num);
+}
+
 int count_sum(int number) {
     int count, chr, s = 0;
 	while (number != 0) {
@@ -12,11 +20,3 @@ int count_sum(int number) {
 	printf("count: %d\n sum: %d\n", count, s);
 
 }
-
-void main() {
-    int num;
-	scanf("%d", &num);
-	count_sum(num);
-}
-
-
