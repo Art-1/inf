@@ -1,51 +1,57 @@
 #include <iostream>
-#include <conio.h>
-#include <string>
-#include <math.h>
+#include <cmath>
 
 using namespace std;
 
-int gcd(int x) {
-    for (int i = 2; i <= sqrt(x); i++) {
-    	if (x % i == 0) {
-    		return 0;
-		}
-	}
-	
-	return 1;
-}
-
-int* generateArr(int n) {
-	int* arr = new int[n];
-	for (int i = 1; i <= n; i++)
-		arr[i] = i;
-	return arr;
-}
-
-void printArr(int arr[], int n) {
-	cout << "\n { ";
-	for (int i = 0; i < n; i++) {
-		cout << arr[i] << ", ";
-	}
-	cout << "} \n";
+int gcn(int x) {
+  for (int i = 2; i <= (int) sqrt(x); i++)
+    if (x % i == 0)  return 0;
+  return 1;
 }
 
 int main() {
-    int n;
-    cout << "Length: \n";
-    cin >> n;
-    
-    int arr1[] = {}, arr2[] = {};
-    int (*arr) = generateArr(n);
-    
-    printArr(arr, n);
-    
-    for (int i=0; i < n; i++) {
-    	if (gcd(i) == 1)
-    		arr1[i] = arr[i];
-    	else
-    		arr2[i] = arr[i];
-	}
+  int n;
+  cout << "Length: ";
+  cin >> n;
 
-    return 0;
+  int arr[n];
+  for (int i = 0; i < n; i++) {
+    arr[i] = i;
+  }
+  
+  cout << "main array" << endl;
+  for (int i = 0;i < n; i ++) cout << arr[i] << " ";
+  cout << endl;
+  
+  int prime_arr[n/2 + 1]; 
+  int other_arr[n/2 + 1]; 
+  int prime_count = 0; 
+  int other_count = 0; 
+  
+    for (int i = 0; i < n; i++) {
+    if (gcn(i)) { 
+      prime_arr[prime_count] = arr[i];
+      prime_count++;
+    } else {
+      other_arr[other_count] = arr[i];
+      other_count++;
+    }
+  }
+
+  cout << endl;
+  cout << "2 array" << endl;
+  for (int i = 0; i < prime_count; i++) {
+    cout << prime_arr[i] << " ";
+  }
+  cout << endl;
+  cout << endl;
+
+  cout << "3 array";
+  cout << endl;
+  for (int i = 0; i < other_count; i++) {
+    cout << other_arr[i] << " ";
+  }
+  cout << endl;
+
+  return 0;
 }
