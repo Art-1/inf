@@ -10,6 +10,7 @@ int gcn(int x) {
 }
 
 int main() {
+
   int n;
   cout << "Length: ";
   cin >> n;
@@ -29,7 +30,7 @@ int main() {
   int other_count = 0; 
   
     for (int i = 0; i < n; i++) {
-    if (gcn(i)) { 
+    if (gcn(i)) {
       prime_arr[prime_count] = arr[i];
       prime_count++;
     } else {
@@ -39,14 +40,14 @@ int main() {
   }
 
   cout << endl;
-  cout << "2 array" << endl;
+  cout << "2 array " << endl;
   for (int i = 0; i < prime_count; i++) {
     cout << prime_arr[i] << " ";
   }
   cout << endl;
   cout << endl;
 
-  cout << "3 array";
+  cout << "3 array ";
   cout << endl;
   for (int i = 0; i < other_count; i++) {
     cout << other_arr[i] << " ";
