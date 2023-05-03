@@ -4,9 +4,8 @@
 using namespace std;
 
 int gcn(int x) {
-  for (int i = 2; i <= (int) sqrt(x); i++) {
+  for (int i = 2; i <= (int) sqrt(x); i++)
     if (x % i == 0)  return 0;
-  }
   return 1;
 }
 
@@ -30,7 +29,7 @@ int main() {
 	}
 	cout <<endl;
 	for (int i = 0; i < n; i++ ) {
-		if (gcn(i) == 1 && i != 1) {
+		if (gcn(i) == 1) {
 			a1[count1] = a[i];
 			count1++;
 		}

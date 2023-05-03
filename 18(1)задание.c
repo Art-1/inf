@@ -1,22 +1,27 @@
-#include <iostream>
-#include <conio.h>
+#include <stdio.h>
+#include <math.h>
 
-using namespace std;
-
-int gcd(int x, int y)
-{
-    return y ? gcd(y, x % y) : x;
+int NOD(int a, int b){
+    while (a != b){
+        if (a > b){
+            a -= b;
+        } else {
+            b -= a;
+        }
+    }
+    return a;
 }
 
-int main()
-{
-    setlocale(LC_ALL, "Russian");
-    int m, n;
-    cin >> m >> n;
-    if (gcd(m, n) == 1)
-        cout << "Взаимно простые";
-    else
-        cout << "Не взаимно простые";
-
+int main(){
+    int a, b;
+    printf("Enter a and b: \n");
+    scanf("%d %d", &a, &b);
+    
+    if (NOD(a, b) == 1) {
+    	printf("Yes");
+	} else {
+		printf("No");
+	}
+    
     return 0;
 }

@@ -7,6 +7,7 @@ void main() {
     char *str;
     char *astr;
     char str_r[200] = "a arks as ksk ak safsaaf sa fsa";
+    gets(str_r);
     str = strtok(str_r, " ");
 
     //str = (char*) malloc(strlen(str));
@@ -18,4 +19,5 @@ void main() {
     	if (astr != NULL) printf ("%s\n",str);
     	str = strtok (NULL, " ");
    }
+   puts(str);
 }
