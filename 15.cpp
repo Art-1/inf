@@ -4,9 +4,10 @@
 using namespace std;
 
 int gcn(int x) {
-  for (int i = 2; i <= (int) sqrt(x); i++)
-    if (x % i == 0)  return 0;
-  return 1;
+    if (x == 1) return 0;
+    for (int i = 2; i <= (int) sqrt(x); i++)
+        if (x % i == 0)  return 0;
+    return 1;
 }
 
 int main() {
