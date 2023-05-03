@@ -1,0 +1,35 @@
+#include <iostream>
+#include <conio.h>
+#include <Windows.h>
+ 
+using namespace std;
+ 
+int main()
+{
+    setlocale (LC_ALL, "Russian");
+    int c = 0, A = 0, b, N;
+ 
+    cout << "Введите размер детали: ";
+    cin >> b;
+ 
+    cout << "Введите колличество деталий: ";
+    cin >> N;
+    
+    int *Array = new int[N];
+ 
+    for(int i = 1; i <= N; i++)
+    {
+        Array[i]= -100 + rand()%200;
+        cout << "Деталь № " << i << " = " << Array[i] << endl;
+        
+        if(Array[i] > (A-b) && Array[i] < (A+b))
+            c++;
+    }
+        if(c == 0)
+            cout << "\nБракованых деталей: " << ((sizeof(Array)/sizeof(int)) - c) << endl;
+        else
+            cout << "\nНет бракованых деталей!" << endl;
+ 
+    system ("pause");
+    return 0;
+}
