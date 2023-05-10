@@ -26,7 +26,7 @@ int main(){
 		if ((B1 < (A1-b) & B1 > (A1+b)) & (B2 < (A2-b) & B2 > (A2+b))) P++;
 	}
 	
-	if (P>0) cout << "P: " << P;
+	if (P>0) cout << "\nP: " << P;
 	else cout << "\n-1";
 	
 }
