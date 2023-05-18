@@ -4,7 +4,6 @@
 #include <string>
 #include <algorithm>
 
-
 struct ZNAK {
     std::string surname;
     std::string name;
@@ -16,30 +15,29 @@ struct ZNAK {
     }
 };
 
-
 void write_data() {
     std::ofstream file("data.txt", std::ios::app);
     if (file.is_open()) {
         while (true) {
             ZNAK person;
-            std::cout << "Введите фамилию (или 'конец' для завершения ввода): ";
+            std::cout << "Введите фамилию (или end): ";
             std::cin >> person.surname;
-            if (person.surname == "конец") {
+            if (person.surname == "end") {
                 break;
             }
-            std::cout << "Name: ";
+            std::cout << "Введите имя: ";
             std::cin >> person.name;
-            std::cout << "Zodiak: ";
+            std::cout << "Введите знак зодиака: ";
             std::cin >> person.zodiac_sign;
-            std::cout << "Date of birth: ";
+            std::cout << "Введите дату рождения (в формате ДД.ММ.ГГГГ): ";
             std::cin >> person.birth_date;
             file << person.surname << " " << person.name << " "
                  << person.zodiac_sign << " " << person.birth_date << std::endl;
             std::cout << "Данные успешно записаны в файл" << std::endl;
             std::string answer;
-            std::cout << "Хотите продолжить ввод данных? (да/нет): ";
+            std::cout << "Продолжить ввод данных? (y/n): ";
             std::cin >> answer;
-            if (answer != "да") {
+            if (answer != "y") {
                 break;
             }
         }
@@ -48,7 +46,6 @@ void write_data() {
         std::cout << "Ошибка открытия файла" << std::endl;
     }
 }
-
 
 std::vector<ZNAK> read_data(const std::string& zodiac_sign) {
     std::ifstream file("data.txt");
@@ -69,17 +66,15 @@ std::vector<ZNAK> read_data(const std::string& zodiac_sign) {
 }
 
 int main() {
-
     write_data();
-    std::string zodiak_prompt;
-    std::cin >> zodiak_prompt;
-
-
-    std::vector<ZNAK> persons = read_data(zodiak_prompt);
+    std::string zodiac;
+    std::cout << "Поиск по знаку зодиака: ";
+    std::cin >> zodiac;
+    std::vector<ZNAK> persons = read_data(zodiac);
     if (persons.empty()) {
-        std::cout << "Людей с знаком Овен не найдено" << std::endl;
+        std::cout << "Людей с " << zodiac << " не найдено" << std::endl;
     } else {
-        std::cout << "Найдены люди с знаком Овен, отсортированные по датам рождения:" << std::endl;
+        std::cout << "Найдены люди " << zodiac << std::endl;
         for (const auto& person : persons) {
             std::cout << person.surname << " " << person.name << ", дата рождения: " << person.birth_date << std::endl;
         }
