@@ -10,20 +10,20 @@ int main() {
 
     int n;
     const int m = 2;
-    int d;
-    int d_max = 0;
+    float d;
+    float d_max = 0;
     
     cout << "Enter n: \n";
     cin >> n;
     if (n < 2) return 0;
 
-    int arr[n][m];
+    float arr[n][m];
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) { 
-            int st = 0;
+            float st = 0;
             cin >> st;
-            arr[i][j] = st; 
+            arr[i][j] = st;
         }
     }
 
@@ -37,8 +37,8 @@ int main() {
     
     for (int i = 0; i < n-1; i++) {
     	for (int j = 0; j < i+1; j++) {
-    		int a1 = (arr[i][0] - arr[i+1][0]);
-    		int a2 = (arr[i][1] - arr[i+1][1]);
+    		float a1 = (arr[i][0] - arr[i+1][0]);
+    		float a2 = (arr[i][1] - arr[i+1][1]);
     	//	int a3 = (arr[i][2] - arr[i+1][2]);
     		d = sqrt(a1*a1 + a2*a2);
     		//cout << "\n" << a1*a1 << " " << a2*a2 << " " << a3*a3 << " " << d << "\n";
