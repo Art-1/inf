@@ -21,7 +21,7 @@ int main() {
 
     ofstream fout2("data2.txt");
 
-    cout << "number to check divisibility: ";
+    cout << "m: ";
     cin >> m;
     cout << "data.txt: ";
     int num;
