@@ -11,7 +11,9 @@ int main() {
     ofstream fout("data.txt");
 
     for (int i = 0; i < N; i++) {
-        int num = rand() % 100;
+        int num;
+        // cin >> num;
+        num = rand() % 100;
         fout << num << " ";
     }
 
