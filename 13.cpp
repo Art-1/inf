@@ -1,21 +1,10 @@
-
-
-
-
-
-
-
-
-
-
-
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <string>
 #include <algorithm>
 
-// Структура для хранения информации о человеке
+
 struct ZNAK {
     std::string surname;
     std::string name;
@@ -27,20 +16,40 @@ struct ZNAK {
     }
 };
 
-// Функция для записи информации о человеке в файл
-void write_data(const ZNAK& person) {
+
+void write_data() {
     std::ofstream file("data.txt", std::ios::app);
     if (file.is_open()) {
-        file << person.surname << " " << person.name << " "
-             << person.zodiac_sign << " " << person.birth_date << std::endl;
+        while (true) {
+            ZNAK person;
+            std::cout << "Введите фамилию (или 'конец' для завершения ввода): ";
+            std::cin >> person.surname;
+            if (person.surname == "конец") {
+                break;
+            }
+            std::cout << "Name: ";
+            std::cin >> person.name;
+            std::cout << "Zodiak: ";
+            std::cin >> person.zodiac_sign;
+            std::cout << "Date of birth: ";
+            std::cin >> person.birth_date;
+            file << person.surname << " " << person.name << " "
+                 << person.zodiac_sign << " " << person.birth_date << std::endl;
+            std::cout << "Данные успешно записаны в файл" << std::endl;
+            std::string answer;
+            std::cout << "Хотите продолжить ввод данных? (да/нет): ";
+            std::cin >> answer;
+            if (answer != "да") {
+                break;
+            }
+        }
         file.close();
-        std::cout << "Данные успешно записаны в файл" << std::endl;
     } else {
         std::cout << "Ошибка открытия файла" << std::endl;
     }
 }
 
-// Функция для чтения информации о людях с определенным знаком зодиака из файла
+
 std::vector<ZNAK> read_data(const std::string& zodiac_sign) {
     std::ifstream file("data.txt");
     std::vector<ZNAK> persons;
@@ -60,20 +69,19 @@ std::vector<ZNAK> read_data(const std::string& zodiac_sign) {
 }
 
 int main() {
-    // Записываем информацию о людях в файл
-    ZNAK person1 = {"Иванов", "Иван", "Овен", "01.04.1990"};
-    ZNAK person2 = {"Петров", "Петр", "Лев", "15.08.1985"};
-    ZNAK person3 = {"Сидорова", "Мария", "Овен", "10.03.1995"};
-    write_data(person1);
-    write_data(person2);
-    write_data(person3);
 
-    // Считываем информацию о людях с знаком Овен из файла и сортируем по датам рождения
-    std::vector<ZNAK> persons = read_data("Овен");
+    write_data();
+    std::string zodiak_prompt;
+    cout << "Поиск по знаку зодиака: ";
+    std::cin >> zodiak_prompt;
+    
+
+
+    std::vector<ZNAK> persons = read_data(zodiak_prompt);
     if (persons.empty()) {
-        std::cout << "Людей с знаком Овен не найдено" << std::endl;
+        std::cout << "Людей с знаком " << zodiak_prompt << " не найдено" << std::endl;
     } else {
-        std::cout << "Найдены люди с знаком Овен, отсортированные по датам рождения:" << std::endl;
+        std::cout << "Найдены люди с знаком " << zodiak_prompt << ", отсортированные по датам рождения:" << std::endl;
         for (const auto& person : persons) {
             std::cout << person.surname << " " << person.name << ", дата рождения: " << person.birth_date << std::endl;
         }
@@ -81,5 +89,3 @@ int main() {
 
     return 0;
 }
-
-
