@@ -1,52 +1,92 @@
 #include <iostream>
-#include <algorithm>
+#include <queue>
 #include <climits>
+using namespace std;
 
 struct Node {
-    int value;
+    int val;
     Node* left;
     Node* right;
+    Node(int v) {
+        val = v;
+        left = NULL;
+        right = NULL;
+    }
 };
 
-// Функция для создания нового узла дерева
-Node* create_node(int value) {
-    Node* node = new Node();
-    node->value = value;
-    node->left = nullptr;
-    node->right = nullptr;
-    return node;
+void printTree(Node* root) {
+    queue<Node*> q;
+    q.push(root);
+    while (!q.empty()) {
+        int size = q.size();
+        for (int i = 0; i < size; i++) {
+            Node* curr = q.front();
+            q.pop();
+            if (curr == NULL) {
+                cout << "  ";
+            } else {
+                cout << curr->val << " ";
+                q.push(curr->left);
+                q.push(curr->right);
+            }
+        }
+        cout << endl;
+    }
 }
 
-// Функция для обхода дерева в глубину и нахождения минимального значения среди листьев
-void find_min_leaf(Node* node, int& min_leaf) {
-    if (node == nullptr) {
+void printMinLeaf(Node* root, int& minVal) {
+    if (root == NULL) {
         return;
     }
-    if (node->left == nullptr && node->right == nullptr) {
-        // Если узел является листом, то проверяем, является ли его значение минимальным
-        min_leaf = std::min(min_leaf, node->value);
+    if (root->left == NULL && root->right == NULL) {
+        if (root->val < minVal) {
+            minVal = root->val;
+        }
+    } else {
+        printMinLeaf(root->left, minVal);
+        printMinLeaf(root->right, minVal);
     }
-    // Рекурсивно обходим левое и правое поддеревья
-    find_min_leaf(node->left, min_leaf);
-    find_min_leaf(node->right, min_leaf);
+}
+
+Node* createTree() {
+    queue<Node*> q;
+    int val;
+    cout << "Enter the root value: ";
+    cin >> val;
+    Node* root = new Node(val);
+    q.push(root);
+    while (!q.empty()) {
+        Node* curr = q.front();
+        q.pop();
+        cout << "Enter the left child value of " << curr->val << " (-1 if none): ";
+        cin >> val;
+        if (val != -1) {
+            curr->left = new Node(val);
+            q.push(curr->left);
+        }
+        cout << "Enter the right child value of " << curr->val << " (-1 if none): ";
+        cin >> val;
+        if (val != -1) {
+            curr->right = new Node(val);
+            q.push(curr->right);
+        }
+    }
+    return root;
 }
 
 int main() {
-    // Создаем дерево
-    Node* root = create_node(5);
-    root->left = create_node(3);
-    root->right = create_node(7);
-    root->left->left = create_node(1);
-    root->left->right = create_node(4);
-    root->right->left = create_node(6);
-    root->right->right = create_node(9);
+    Node* root = createTree();
 
-    // Находим минимальное значение среди листьев
-    int min_leaf = INT_MAX;
-    find_min_leaf(root, min_leaf);
+    cout << "\nTree values: \n";
+    printTree(root);
 
-    // Выводим результат
-    std::cout << "Минимальное значение среди листьев: " << min_leaf << std::endl;
+    int minVal = INT_MAX;
+    printMinLeaf(root, minVal);
+    if (minVal == INT_MAX) {
+        cout << "\nThere are no leaves in the tree.";
+    } else {
+        cout << "\nMinimum leaf value: " << minVal;
+    }
 
     return 0;
 }
