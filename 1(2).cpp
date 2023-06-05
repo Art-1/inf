@@ -3,6 +3,8 @@
 #include <climits>
 using namespace std;
 
+// 1
+
 struct Node {
     int val;
     Node* left;
@@ -70,6 +72,7 @@ Node* createTree() {
             curr->right = new Node(val);
             q.push(curr->right);
         }
+        if (val == -9999) break;
     }
     return root;
 }
@@ -85,7 +88,7 @@ int main() {
     if (minVal == INT_MAX) {
         cout << "\nThere are no leaves in the tree.";
     } else {
-        cout << "\nMinimum leaf value: " << minVal;
+        cout << "\nMin value: " << minVal;
     }
 
     return 0;
