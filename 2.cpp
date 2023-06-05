@@ -3,6 +3,8 @@
 #include <climits>
 using namespace std;
 
+//2
+
 struct Node {
     int val;
     Node* left;
@@ -95,7 +97,7 @@ int main() {
 
     int minVal = findMinLeaf(root);
     if (minVal == INT_MAX) {
-        cout << "\nThere are no leaves in the tree.";
+        cout << "\nNot found.";
     } else {
         cout << "\nMinimum leaf value: " << minVal;
     }
@@ -107,7 +109,7 @@ int main() {
     if (pathLength == 0) {
         cout << "\nNode with value " << e << " not found in the tree.";
     } else {
-        cout << "\nPath length from root to " << e << ": " << pathLength;
+        cout << "\nPath length from root to " << e << ": " << pathLength+1;
     }
 
     return 0;
