@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 
+//13
 
 struct ZNAK {
     std::string surname;
@@ -72,7 +73,7 @@ int main() {
 
     write_data();
     std::string zodiak_prompt;
-    cout << "Поиск по знаку зодиака: ";
+    std::cout << "Поиск по знаку зодиака: ";
     std::cin >> zodiak_prompt;
     
 
@@ -81,7 +82,7 @@ int main() {
     if (persons.empty()) {
         std::cout << "Людей с знаком " << zodiak_prompt << " не найдено" << std::endl;
     } else {
-        std::cout << "Найдены люди с знаком " << zodiak_prompt << ", отсортированные по датам рождения:" << std::endl;
+        std::cout << "Найдены люди с знаком " << zodiak_prompt << std::endl;
         for (const auto& person : persons) {
             std::cout << person.surname << " " << person.name << ", дата рождения: " << person.birth_date << std::endl;
         }
