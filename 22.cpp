@@ -1,6 +1,8 @@
 #include <iostream>
 #include <stdlib.h> 
 
+// 22
+
 using namespace std;
 
 int main () {
@@ -15,6 +17,10 @@ int main () {
 		if (value) arr[i] = rand()%10;
 		else arr[i] = -(rand()%10);
 		cout << arr[i] << " ";
+		
+		/*int value;
+		cin >> value;
+		arr[i] = value;*/
 	}
 	
 	for (int i = 0; i < len; i++) {
