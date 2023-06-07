@@ -50,17 +50,20 @@ int findMinLeaf(Node* root) {
 
 int findPathLength(Node* root, int e) {
     if (root == NULL) {
-        return 0;
-    }
-    if (root->val == e) {
         return -1;
     }
-    int leftLength = findPathLength(root->left, e);
-    int rightLength = findPathLength(root->right, e);
-    if (leftLength == 0 && rightLength == 0) {
+    if (root->val == e) {
         return 0;
     }
-    return 1 + max(leftLength, rightLength);
+    int leftLength = findPathLength(root->left, e);
+    if (leftLength >= 0) {
+        return 1 + leftLength;
+    }
+    int rightLength = findPathLength(root->right, e);
+    if (rightLength >= 0) {
+        return 1 + rightLength;
+    }
+    return -1;
 }
 
 Node* createTree() {
@@ -106,7 +109,7 @@ int main() {
     cout << "\nEnter the value of e: ";
     cin >> e;
     int pathLength = findPathLength(root, e);
-    if (pathLength == 0) {
+    if (pathLength == -1) {
         cout << "\nNode with value " << e << " not found in the tree.";
     } else {
         cout << "\nPath length from root to " << e << ": " << pathLength+1;
