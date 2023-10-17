@@ -138,7 +138,7 @@ class Specialist {
             cout << "default constructor called" << endl;
         }
         
-        Specialist(string fio, int age, string specialization, int salary) {
+        Specialist(string fio, int age, string specialization, string work_location, int salary) {
             this->fio = fio;
             this->age = age;
             this->specialization = specialization;
@@ -187,22 +187,20 @@ int main() {
     well2.SetQuality("H");
     //Specialist arthur("Arthur", 20, "Proga");
     
-    // Создаем указатель на компоненту-функцию GetQuality класса OilWell
+    //////////////////////////////////////////
     void (OilWell::*ptr)() = &OilWell::GetQuality;
     
-    // Вызываем компоненту-функцию GetQuality через указатель
     (well2.*ptr)();
     
     //////////////////////////////////////////
-    vector<string> specialists2 = {"John", "Mike"};
-    vector<string> equipment2 = {"Fr-123", "TS-456"};
-    OilWell well3("USA", specialists2, equipment2, "Medium");
+    Specialist sp("Gabdrahimov A.I", 20, "programming", "Ufa", 30000);
     
-    // Присваиваем указатель на компоненту-функцию GetQuality новому экземпляру
-    ptr = &OilWell::GetQuality;
+    // Присваиваем указатель на компоненту-функцию SetQuality новому экземпляру
+    void (Specialist::*ptr2)(int) = &Specialist::SetAge;
     
-    // Вызываем компоненту-функцию GetQuality для нового экземпляра через указатель
-    (well3.*ptr)();
+    // Вызываем компоненту-функцию SetQuality для нового экземпляра через указатель
+    (sp.*ptr2)(21);
+    sp.GetAge();
     
     return 0;
 }
