@@ -195,10 +195,8 @@ int main() {
     //////////////////////////////////////////
     Specialist sp("Gabdrahimov A.I", 20, "programming", "Ufa", 30000);
     
-    // Присваиваем указатель на компоненту-функцию SetQuality новому экземпляру
     void (Specialist::*ptr2)(int) = &Specialist::SetAge;
     
-    // Вызываем компоненту-функцию SetQuality для нового экземпляра через указатель
     (sp.*ptr2)(21);
     sp.GetAge();
     
