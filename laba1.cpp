@@ -4,8 +4,6 @@
 
 using namespace std;
 
-const int N = 256;
-
 class OilWell {
     string location;
     vector<string> specialists;
