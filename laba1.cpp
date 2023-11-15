@@ -185,46 +185,90 @@ public:
 };
 
 int main() {
-    vector<string> specialists = {};
-    //specialists = { "Arthur", "Tommy" };
-    string str;
-    while (str != "end/") {
-        cin >> str;
-        if (str == "end/") break;
-        specialists.push_back(str);
-    }
+    // vector<string> specialists = {};
+    // //specialists = { "Arthur", "Tommy" };
+    // string str;
+    // while (str != "end/") {
+    //     cin >> str;
+    //     if (str == "end/") break;
+    //     specialists.push_back(str);
+    // }
     
+    // vector<string> equipment;
+    // //equipment = { "Fr-242", "TS-230"};
+    // str = "";
+    // while (str != "end/") {
+    //     cin >> str;
+    //     if (str == "end/") break;
+    //     equipment.push_back(str);
+    // }
+
+    // OilWell well2("Brazil", specialists, equipment, "High");
+
+    // well2.GetSpecialists();
+    // well2.GetEquipment();
+
+    // OilWell well_c(well2);
+    // well2.SetQuality("H");
+    // //Specialist arthur("Arthur", 20, "Proga");
+
+    // //////////////////////////////////////////
+    // void (OilWell:: * ptr)() = &OilWell::GetQuality;
+
+    // (well2.*ptr)();
+
+    // //////////////////////////////////////////
+    // Specialist sp("Gabdrahimov A.I", 20, "programming", "Ufa", 60000);
+    // //Specialist Sp1(sp);
+
+    // void (Specialist:: * ptr2)(int) = &Specialist::SetAge;
+
+    // (sp.*ptr2)(21);
+    // sp.GetAge();
+    vector<string> specialists;
     vector<string> equipment;
-    //equipment = { "Fr-242", "TS-230"};
-    str = "";
-    while (str != "end/") {
-        cin >> str;
-        if (str == "end/") break;
-        equipment.push_back(str);
+    
+    while (true) {
+        string location;
+        string oil_quality;
+        
+        cout << "Well location: (If break: b)" << endl;
+        cin >> location;
+        if (location == "b") break;
+        
+        int N = 256;
+        while (true) {
+            string fio;
+            int age;
+            string specialization;
+            string work_location;
+            int salary;
+            
+            cout << "Fio: " << endl;
+            cin >> fio;
+            cout << "Age: " << endl;
+            cin >> age;
+            cout << "Specialization: " << endl;
+            cin >> specialization;
+            cout << "Work location: " << endl;
+            cin >> work_location;
+            cout << "Salary: " << endl;
+            cin >> salary;
+            
+            
+            string str;
+            while (true) {
+                cin >> str;
+                if (str == "b") break;
+                equipment.push_back(str);
+                str = "";
+            }
+            
+            cout << "Oil quality" << endl;
+            cin >> oil_quality >> endl;
+            
+        }
     }
-
-    OilWell well2("Brazil", specialists, equipment, "High");
-
-    well2.GetSpecialists();
-    well2.GetEquipment();
-
-    OilWell well_c(well2);
-    well2.SetQuality("H");
-    //Specialist arthur("Arthur", 20, "Proga");
-
-    //////////////////////////////////////////
-    void (OilWell:: * ptr)() = &OilWell::GetQuality;
-
-    (well2.*ptr)();
-
-    //////////////////////////////////////////
-    Specialist sp("Gabdrahimov A.I", 20, "programming", "Ufa", 60000);
-    //Specialist Sp1(sp);
-
-    void (Specialist:: * ptr2)(int) = &Specialist::SetAge;
-
-    (sp.*ptr2)(21);
-    sp.GetAge();
 
     return 0;
 }
