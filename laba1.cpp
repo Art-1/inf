@@ -265,7 +265,7 @@ int main() {
             }
             
             cout << "Oil quality" << endl;
-            cin >> oil_quality >> endl;
+            cin >> oil_quality;
             
         }
     }
