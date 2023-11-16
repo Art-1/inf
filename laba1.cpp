@@ -310,7 +310,7 @@ int main() {
 
         }
 
-        Maps map(map_name, locations, wells_arr, specialists, count);
+        Maps map(map_names, locations, wells_arr, specialists, count);
     }
 
     return 0;
