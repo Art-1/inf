@@ -262,10 +262,13 @@ int main() {
             cin >> age;
             cout << "Specialization: " << endl;
             cin >> specialization;
-            cout << "Work location: " << endl;
-            cin >> work_location;
+
+            work_location = location;
+
             cout << "Salary: " << endl;
             cin >> salary;
+
+            Specialist spec(fio, age, specialization, work_location, salary);
 
 
             string str;
