@@ -286,8 +286,8 @@ int main() {
             
 
         }
-        vector<string> strr = { "asg", "tsat" };
-        Maps map(locations, wells_arr, specialists, 2);
+
+        Maps map(locations, wells_arr, specialists, count);
     }
 
     return 0;
