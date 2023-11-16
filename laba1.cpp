@@ -231,7 +231,7 @@ int main() {
     // sp.GetAge();
     vector<string> specialists;
     vector<string> equipment;
-    vector<OilWell> wells_arr;
+    vector<string> wells_arr;
     vector<string> locations;
     int count = 0;
     
@@ -257,6 +257,7 @@ int main() {
 
             cout << "Fio: (If break: b)" << endl;
             cin >> fio;
+            if (fio == "b") break;
             cout << "Age: " << endl;
             cin >> age;
             cout << "Specialization: " << endl;
@@ -280,12 +281,13 @@ int main() {
             cin >> oil_quality;
             count++;
             OilWell well(location, specialists, equipment, oil_quality);
-            wells_arr.push_back(well);
+            wells_arr.push_back(location);
 
             
 
         }
-        Maps map(wells_arr, wells_arr, specialists, count);
+        vector<string> strr = { "asg", "tsat" };
+        Maps map(locations, wells_arr, specialists, 2);
     }
 
     return 0;
