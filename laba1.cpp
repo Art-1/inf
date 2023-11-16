@@ -69,7 +69,7 @@ public:
 };
 
 class Maps {
-    string location;
+    vector<string> locations;
     vector<string> wells;
     vector<string> specialists;
     int count;
@@ -84,16 +84,20 @@ public:
     }
 
 
-    Maps(string location, vector<string> wells, vector<string> specialists, int count) {
-        this->location = location;
+    Maps(vector<string> locations, vector<string> wells, vector<string> specialists, int count) {
+        this->locations = locations;
         this->wells = wells;
         this->specialists = specialists;
         this->count = count;
     }
 
 
-    void GetLocation() {
-        cout << location << endl;
+    void GetLocations() {
+        cout << "{ ";
+        for (int i = 0; i < locations.size(); i++) {
+            cout << locations[i] << " ";
+        }
+        cout << " }" << endl;
     }
     void GetSpecialists() {
         cout << "{ ";
@@ -115,7 +119,7 @@ public:
 
 
     void SetLocation(string location) {
-        this->location = location;
+        this->locations = locations;
     }
     void SetSpecialists(vector<string> specialists) {
         this->specialists = specialists;
@@ -193,7 +197,7 @@ int main() {
     //     if (str == "end/") break;
     //     specialists.push_back(str);
     // }
-    
+
     // vector<string> equipment;
     // //equipment = { "Fr-242", "TS-230"};
     // str = "";
@@ -227,24 +231,31 @@ int main() {
     // sp.GetAge();
     vector<string> specialists;
     vector<string> equipment;
+    vector<OilWell> wells_arr;
+    vector<string> locations;
+    int count = 0;
     
+
     while (true) {
-        string location;
+        
+        string location = "";
         string oil_quality;
         
+
         cout << "Well location: (If break: b)" << endl;
         cin >> location;
         if (location == "b") break;
-        
-        int N = 256;
+
+        locations.push_back(location);
+
         while (true) {
             string fio;
             int age;
             string specialization;
             string work_location;
             int salary;
-            
-            cout << "Fio: " << endl;
+
+            cout << "Fio: (If break: b)" << endl;
             cin >> fio;
             cout << "Age: " << endl;
             cin >> age;
@@ -254,20 +265,27 @@ int main() {
             cin >> work_location;
             cout << "Salary: " << endl;
             cin >> salary;
-            
-            
+
+
             string str;
             while (true) {
+                cout << "Equipment: (If break: b)" << endl;
                 cin >> str;
                 if (str == "b") break;
                 equipment.push_back(str);
                 str = "";
             }
-            
+
             cout << "Oil quality" << endl;
             cin >> oil_quality;
+            count++;
+            OilWell well(location, specialists, equipment, oil_quality);
+            wells_arr.push_back(well);
+
             
+
         }
+        Maps map(wells_arr, wells_arr, specialists, count);
     }
 
     return 0;
