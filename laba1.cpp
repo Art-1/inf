@@ -69,6 +69,7 @@ public:
 };
 
 class Maps {
+    vector<string> map_names;
     vector<string> locations;
     vector<string> wells;
     vector<string> specialists;
@@ -84,13 +85,22 @@ public:
     }
 
 
-    Maps(vector<string> locations, vector<string> wells, vector<string> specialists, int count) {
+    Maps(vector<string> map_names, vector<string> locations, vector<string> wells, vector<string> specialists, int count) {
+        this->map_names = map_names;
         this->locations = locations;
         this->wells = wells;
         this->specialists = specialists;
         this->count = count;
     }
 
+
+    void GetMap_Names() {
+        cout << "{ ";
+        for (int i = 0; i < map_names.size(); i++) {
+            cout << map_names[i] << " ";
+        }
+        cout << " }" << endl;
+    }
 
     void GetLocations() {
         cout << "{ ";
@@ -117,7 +127,9 @@ public:
         cout << count << endl;
     }
 
-
+    void SetMap_Names(vector<string> map_names) {
+        this->map_names = map_names;
+    }
     void SetLocation(string location) {
         this->locations = locations;
     }
@@ -230,6 +242,8 @@ int main() {
     // (sp.*ptr2)(21);
     // sp.GetAge();
     vector<string> specialists;
+
+    vector<string> map_names;
     vector<string> equipment;
     vector<string> wells_arr;
     vector<string> locations;
@@ -239,12 +253,16 @@ int main() {
     while (true) {
         
         string location = "";
-        string oil_quality;
+        string map_name = "";
+        string oil_quality = "";
         
 
         cout << "Well location: (If break: b)" << endl;
         cin >> location;
         if (location == "b") break;
+
+        cout << "Well names: " << endl;
+        cin >> map_name;
 
         locations.push_back(location);
 
@@ -284,13 +302,15 @@ int main() {
             cin >> oil_quality;
             count++;
             OilWell well(location, specialists, equipment, oil_quality);
+
+            map_names.push_back(map_name);
             wells_arr.push_back(location);
 
             
 
         }
 
-        Maps map(locations, wells_arr, specialists, count);
+        Maps map(map_name, locations, wells_arr, specialists, count);
     }
 
     return 0;
